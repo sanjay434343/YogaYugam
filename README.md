@@ -76,7 +76,7 @@ Track your yoga journey over time.
 
 <p align="center">
   <img src="assets/images/settings.png" alt="Settings Screen" width="180"/>
-  <img src="assets/images/hisory.png" alt="History Screen" width="180"/>
+  <img src="assets/images/history.png" alt="History Screen" width="180"/>
   <img src="assets/images/polls.png" alt="Polls Screen" width="180"/>
   <img src="assets/images/monthly.png" alt="Monthly Screen" width="180"/>
 </p>
