@@ -1,0 +1,91 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        "progress": {
+          "$courseId": {
+            "lastPlayed": {
+              "chapterId": { ".validate": "newData.isString()" },
+              "position": { ".validate": "newData.isNumber()" },
+              "timestamp": { ".validate": "newData.isNumber()" }
+            },
+            "completedChapters": {
+              "$chapterId": {
+                "completedAt": { ".validate": "newData.isNumber()" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "courses": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$courseId": {
+        ".read": "auth != null",
+        ".write": "auth != null",
+        "content": {
+          "$chapterId": {
+            ".validate": "newData.hasChildren(['title', 'src'])",
+            "title": { ".validate": "newData.isString()" },
+            "src": { ".validate": "newData.isString()" },
+            "comments": {
+              "$commentId": {
+                ".validate": "newData.hasChildren(['text', 'userId', 'username', 'timestamp'])",
+                "text": { ".validate": "newData.isString()" },
+                "userId": { ".validate": "newData.isString()" },
+                "username": { ".validate": "newData.isString()" },
+                "timestamp": { ".validate": "newData.isNumber()" }
+              }
+            }
+          }
+        },
+        "name": { ".validate": "newData.isString()" },
+        "description": { ".validate": "newData.isString()" },
+        "image": { ".validate": "newData.isString()" },
+        "duration": { ".validate": "newData.isString()" },
+        "price": { ".validate": "newData.isNumber()" }
+      }
+    },
+    "notifications": {
+      ".read": "auth != null",
+      ".write": "root.child('users').child(auth.uid).exists()",
+      "$notificationId": {
+        ".validate": "newData.hasChildren(['title', 'content', 'timestamp', 'read'])",
+        "title": {
+          ".validate": "newData.isString()"
+        },
+        "content": {
+          ".validate": "newData.isString()"
+        },
+        "timestamp": {
+          ".validate": "newData.isNumber()"
+        },
+        "read": {
+          ".validate": "newData.isBoolean()"
+        }
+      }
+    },
+    "notification": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$notificationId": {
+        ".validate": "newData.hasChildren(['title', 'content', 'timestamp', 'read'])",
+        "title": {
+          ".validate": "newData.isString()"
+        },
+        "content": {
+          ".validate": "newData.isString()"
+        },
+        "timestamp": {
+          ".validate": "newData.isNumber()"
+        },
+        "read": {
+          ".validate": "newData.isBoolean()"
+        }
+      }
+    }
+  }
+}

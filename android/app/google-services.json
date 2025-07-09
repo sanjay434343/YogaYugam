@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "925990855330",
+    "project_id": "yogaugam-92534",
+    "storage_bucket": "yogaugam-92534.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925990855330:android:57edb01e86e5139c0fadfb",
+        "android_client_info": {
+          "package_name": "com.yogaugam.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWynNTCIUdE9f5JlGJvf4ZorzPjvnsBS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

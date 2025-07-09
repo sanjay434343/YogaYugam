@@ -1,0 +1,66 @@
+name: yoga 
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.6.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core: ^2.15.1
+  firebase_auth: ^4.9.0
+  cloud_firestore: ^4.9.1
+  shared_preferences: ^2.2.2
+  url_launcher: ^6.1.14
+  firebase_database: ^10.2.5
+  audioplayers: ^5.1.0
+  firebase_messaging: ^14.6.5
+  flutter_local_notifications: ^17.0.1
+  flutter_markdown: ^0.6.18
+  logger: ^1.0.0  # Add this line to include the logger package
+  cached_network_image: ^3.3.0
+  confetti: ^0.7.0
+  video_player: ^2.7.0
+  intl: ^0.18.1
+  timeago: ^3.5.0
+  qr_flutter: ^4.1.0
+  shimmer: ^3.0.0
+  equatable: ^2.0.5
+  provider: ^6.0.5
+  http: ^1.1.0
+  package_info_plus: ^4.1.0
+  lottie: ^2.6.0  # Add this line
+  logging: ^1.2.0
+  chewie: ^1.7.1
+  async: ^2.11.0
+  animations: ^2.0.11
+  gauge_chart: ^1.0.4
+  
+  
+  # Remove conflicting video player packages
+  # flutter_vlc_player: ^7.4.0
+  # appinio_video_player: ^1.2.2  # Remove the LocalHero dependency since we'll use regular Hero animations
+  # local_hero: ^0.2.0
+  # local_hero_transform: ^0.0.5
+  # Remove the wakelock dependency since we're using SystemChrome
+  # wakelock: ^0.6.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  # flutter_launcher_icons: ^0.9.2 # Removed to prevent launcher icon conflicts
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/audio/
+    - assets/audio/b2.mp3
+    - assets/audio/cheer.mp3
+    - assets/images/splash.png
+
+
+    # Remove bell.mp3 reference

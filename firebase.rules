@@ -1,0 +1,70 @@
+{
+  "rules": {
+    "courses": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('users').child(auth.uid).child('userdata').child('profile').exists()",
+      "$courseId": {
+        ".validate": "newData.hasChildren(['description', 'duration', 'id', 'image', 'name', 'price'])",
+        "content": {
+          ".read": "auth != null",  // Allow reading the entire content node
+          ".validate": "newData.hasChildren()",  // Validate that content has children
+          "$key": {
+            ".validate": "newData.hasChildren(['src', 'title'])",
+            "src": { ".validate": "newData.isString()" },
+            "title": { ".validate": "newData.isString()" }
+          }
+        },
+        "description": { ".validate": "newData.isString()" },
+        "duration": { ".validate": "newData.isString()" },
+        "id": { ".validate": "newData.isNumber()" },
+        "image": { ".validate": "newData.isString()" },
+        "name": { ".validate": "newData.isString()" },
+        "price": { ".validate": "newData.isNumber()" }
+      }
+    },
+
+    "appversion": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('users').child(auth.uid).child('userdata').child('profile').exists()"
+    },
+
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+
+        "userdata": {
+          "profile": {
+            ".read": "$uid === auth.uid",
+            ".write": "$uid === auth.uid",
+            "name": { ".validate": "newData.isString()" }
+          },
+          "totalpoints": {
+            ".read": "$uid === auth.uid",
+            ".write": "$uid === auth.uid",
+            ".validate": "newData.isNumber()"
+          },
+          "activities": {
+            "$activityId": {
+              ".validate": "newData.hasChildren(['title', 'timestamp', 'points', 'completed'])",
+              "title": { ".validate": "newData.isString()" },
+              "timestamp": { ".validate": "newData.isString()" },
+              "points": { ".validate": "newData.isNumber()" },
+              "completed": { ".validate": "newData.isBoolean()" }
+            }
+          }
+        },
+
+        "points_history": {
+          "$pointId": {
+            ".validate": "newData.hasChildren(['points', 'timestamp', 'activity', 'type'])",
+            "points": { ".validate": "newData.isNumber()" },
+            "timestamp": { ".validate": "newData.isString()" },
+            "activity": { ".validate": "newData.isString()" },
+            "type": { ".validate": "newData.isString()" }
+          }
+        }
+      }
+    }
+  }
+}
